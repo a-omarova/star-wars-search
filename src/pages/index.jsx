@@ -5,7 +5,7 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<div>
-				<Search />
+				<Search onSearch={value => console.log('Search: ' + value)} />
 			</div>
 		);
 	};
