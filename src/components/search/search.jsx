@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import Transports from './transports';
 
 class Search extends Component {
 	render() {
-		const {value, updateValue, onSearch} = this.props;
+		const {transports, value, updateValue, onSearch} = this.props;
 
 		return (
 			<div>
@@ -12,6 +13,9 @@ class Search extends Component {
 				<button onClick={onSearch}>
 					Search
 				</button>
+				{(transports && transports.length > 0) &&
+					<Transports transports={transports}/>
+				}
 			</div>
 		);
 	};
