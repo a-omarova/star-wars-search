@@ -1,24 +1,7 @@
-import React, {Component} from 'react';
 import compose from 'recompose/compose';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
-
-class Search extends Component {
-	render() {
-		const {value, updateValue, onSearch} = this.props;
-
-		return (
-			<div>
-				<label>Search:
-					<input type="text" value={value} onChange={updateValue}/>
-				</label>
-				<button onClick={onSearch}>
-					Search
-				</button>
-			</div>
-		);
-	};
-}
+import Search from './search';
 
 const enhance = compose(
 	withState('value', 'updateValue', ''),
