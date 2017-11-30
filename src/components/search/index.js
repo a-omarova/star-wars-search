@@ -11,13 +11,13 @@ function mapStateToProps(store) {
 	const {transports} = store;
 
 	return {
-		transports
+		suggestions: transports
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		doSearch: value => {
+		doLookup: value => {
 			dispatch(findTransports(value));
 		}
 	};
@@ -31,9 +31,15 @@ const enhance = compose(
 			const {value} = e.target;
 
 			props.updateValue(value);
-			props.doSearch(value);
+			props.doLookup(value);
 		},
-		onSearch: props => () => props.onSearch(props.value)
+		onSearch: props => () => {
+			props.onSearch(props.value)
+		},
+		onSelect: props => value => {
+			props.updateValue(value);
+			props.doLookup('');
+		}
 	})
 );
 

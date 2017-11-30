@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Transports from './transports';
+import Suggestions from './suggestions';
 
 class Search extends Component {
 	render() {
-		const {transports, value, updateValue, onSearch} = this.props;
+		const {suggestions, value, updateValue, onSearch, onSelect} = this.props;
 
 		return (
 			<div>
@@ -13,12 +13,12 @@ class Search extends Component {
 				<button onClick={onSearch}>
 					Search
 				</button>
-				{(transports && transports.length > 0) &&
-					<Transports transports={transports}/>
-				}
+				{suggestions && suggestions.length > 0 && (
+					<Suggestions suggestions={suggestions} onSelect={onSelect}/>
+				)}
 			</div>
 		);
-	};
+	}
 }
 
 export default Search;
