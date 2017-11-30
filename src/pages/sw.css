@@ -1,0 +1,20 @@
+.sw {
+	background-image: url(../images/bg.jpg);
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat-y;
+}
+
+.sw__container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: -webkit-fill-available;
+	text-align: center;
+ }
+
+.sw__image {
+	width: 200px;
+	margin: 50px;
+ }
