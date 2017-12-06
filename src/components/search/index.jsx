@@ -5,7 +5,8 @@ import Search from './search';
 const enhance = compose(
 	withState('value', 'updateValue', ''),
 	withHandlers({
-		updateValue: props => e => props.updateValue(e.target.value)
+		updateValue: props => e => props.updateValue(e.target.value),
+		onSearch: props => () => props.onSearch(props.value)
 	})
 );
 
