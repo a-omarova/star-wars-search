@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import {withState, withHandlers} from 'recompose';
+import {compose} from 'recompose';
+import Search from './search';
 
-export default class Search extends Component {
-	render() {
-		return (
-			<div>
-				<label>Search:
-					<input type="text"/>
-				</label>
-			</div>
-		);
-	};
-}
+const enhance = compose(
+	withState('value', 'updateValue', ''),
+	withHandlers({
+		updateValue: props => e => props.updateValue(e.target.value),
+		onSearch: props => () => props.onSearch(props.value)
+	})
+);
+
+export default enhance(Search);

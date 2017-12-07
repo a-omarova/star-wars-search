@@ -1,0 +1,26 @@
+.list {
+	margin: 40px 0 0;
+	list-style: none;
+	background: #333333;
+	border: 2px solid white;
+	border-radius: 10px;
+	padding: 0;
+	color: lightgray;
+	text-align: left;
+	font-size: 20px;
+	width: 440px;
+	overflow: hidden;
+}
+
+.list__item {
+	padding: 20px 15px;
+}
+
+.list__item:hover {
+	background: lightgray;
+	color: #333333;
+}
+
+.list__item + .list__item {
+	border-top: 1px solid gray;
+}
