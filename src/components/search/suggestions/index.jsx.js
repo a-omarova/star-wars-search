@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './suggestion.css';
 
 export default class Suggestion extends Component {
 	render () {
+
+		const {list} = this.props;
+
 		return (
 			<ul className="suggestion">
-				<li className="suggestion__item">Millennium Falcon</li>
-				<li className="suggestion__item">Naboo Royal Starship</li>
-				<li className="suggestion__item">Death Star</li>
-				<li className="suggestion__item">Star Destroyer</li>
-				<li className="suggestion__item">Ghost</li>
-				<li className="suggestion__item">Azure Angel II</li>
+				{list.map( (value, index) => (
+					<li key={index}> {value} </li>
+				))}
 			</ul>
 		)
 	}
 }
+
+Suggestion.propTypes = {
+	list: PropTypes.array.isRequired
+};

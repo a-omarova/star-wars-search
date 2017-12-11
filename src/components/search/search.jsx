@@ -5,7 +5,7 @@ import './search.css';
 export default class Search extends Component {
 	render() {
 
-		const {value, updateValue, onSearch} = this.props;
+		const {value, updateValue, onSearch, list} = this.props;
 
 		return (
 			<div className="search">
@@ -13,7 +13,7 @@ export default class Search extends Component {
 				<button className="search__btn" onClick={() => onSearch(value)}>
 					Search
 				</button>
-				<Suggestion />
+				<Suggestion list={list}/>
 			</div>
 		);
 	};
