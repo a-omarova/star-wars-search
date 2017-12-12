@@ -5,12 +5,12 @@ import './suggestion.css';
 export default class Suggestion extends Component {
 	render () {
 
-		const {list} = this.props;
+		const {list, onClick} = this.props;
 
 		return (
 			<ul className="suggestion">
-				{list.map( (value, index) => (
-					<li key={index}> {value} </li>
+				{list.map((value, index) => (
+					<li сlassName="suggestion__item" key={index} onClick={() => onClick(value)}> {value} </li>
 				))}
 			</ul>
 		)

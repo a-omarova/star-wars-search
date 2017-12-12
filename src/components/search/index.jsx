@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import Search from './search';
 
 function mapStateToProps(state) {
-	return {list: []};
+	const ships = state.transports.map( value => value.fields.name);
+
+	return {list: ships};
 }
 
 function mapDispatchToProps(dispatch) {
