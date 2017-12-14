@@ -25,7 +25,7 @@ const enhance = compose(
 		updateValue: props => {
 			return e => {
 				props.updateValue(e.target.value);
-				props.findSuggestion(e.target.value)
+				props.findSuggestion(e.target.value);
 			}
 		},
 		onSearch: props => () => props.onSearch(props.value)
