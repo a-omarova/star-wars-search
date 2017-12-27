@@ -1,5 +1,6 @@
-import transportsList from '../../data/transport.json';
-
+import transports from '../../data/transport.json';
+import people from '../../data/people.json';
+import starships from '../../data/starships.json';
 
 //Ищем пилотов по следующему алгоритму:
 // в таблице transport есть название корабля (pk === 12)
@@ -9,13 +10,38 @@ import transportsList from '../../data/transport.json';
 export const PILOTS_FOUND = 'PILOTS_FOUND';
 
 const filterPilots = name =>  {
-	return transportsList
-		.filter(item => item.fields.name.toLowerCase().indexOf(name.toLowerCase()) >= 0)
+	const filteredTransports = transports
+		.filter(item => item.fields.name.toLowerCase() === name.toLowerCase());
+
+	if (filteredTransports.length === 0) {
+		return [];
+	}
+
+	const transportPk = filteredTransports[0].pk;
+
+	const filteredStarships = starships
+		.filter(elem => elem.pk === transportPk);
+
+	if (filteredStarships.length === 0) {
+		return [];
+	}
+
+	const pilots = filteredStarships[0].fields.pilots;
+
+	return pilots.map(pk => {
+		const peopleList = people.filter(person => person.pk === pk);
+
+		if (peopleList.length === 0) {
+			return null;
+		}
+
+		return peopleList[0].fields.name;
+	}).filter(name => name);
 };
 
 export const findPilots = (name) => {
 	return {
 		type: PILOTS_FOUND,
-		transports: name ? filterPilots(name) : []
+		pilots: name ? filterPilots(name) : []
 	}
 };
