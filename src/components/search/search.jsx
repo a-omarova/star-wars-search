@@ -12,10 +12,10 @@ export default class Search extends Component {
 		return (
 			<div className="search">
 				<input className="search__input" type="text" value={value} onChange={updateValue}/>
-				<button className="search__btn" onClick={() => onSearch(value)}>
+				<button className="search__btn" onClick={onSearch}>
 					Search
 				</button>
-				<Suggestion list={list} onClick={v => updateValue({target: {value: v}} )} hidden={hideSuggestionBox}/>
+				<Suggestion list={list} onClick={v => updateValue({target: {value: v}})} hidden={hideSuggestionBox}/>
 			</div>
 		);
 	};

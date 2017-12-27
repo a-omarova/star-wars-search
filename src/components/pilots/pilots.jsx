@@ -7,12 +7,15 @@ import logo from '../../images/sw-logo.svg';
 
 export default class Pilots extends Component {
 	render() {
+
+		const {list, doFindPilots} = this.props;
+
 		return(
 			<div className="sw">
 				<div className="sw__container">
 					<img className="sw__image" src={logo} alt="star wars logo"/>
-					<Search onSearch={value => console.log('value ' + value)} />
-					<List />
+					<Search onSearch={doFindPilots}/>
+					<List list={list}/>
 				</div>
 			</div>
 		);
